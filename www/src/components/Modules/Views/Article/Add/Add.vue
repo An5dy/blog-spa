@@ -27,7 +27,8 @@
                 <Select v-model="formData.category" style="width: 150px">
                     <Option v-for="(cate, index) in categories"
                             :key="cate.id"
-                            :value="cate.id">{{ cate.title }}</Option>
+                            :value="cate.id">{{ formData.category + cate.id }}</Option>
+                    <!--:value="cate.id">{{ cate.title }}</Option>-->
                 </Select>
             </FormItem>
             <FormItem>
