@@ -77,7 +77,10 @@ let routes = [
     },
     {
         path: '/sign',
-        component: Components.Sign
+        component: Components.Sign,
+        meta: {
+            auth: true
+        }
     }
 ]
 
@@ -98,6 +101,12 @@ router.beforeEach((to, from, next) => {
             next()
         } else {
             next({ path:'/sign' })
+        }
+    } else if (to.matched.some(r => r.meta.auth)) {
+        if (JWT.get()) {
+            next({path: '/'})
+        } else {
+            next()
         }
     }
     next()
