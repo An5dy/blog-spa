@@ -10,6 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::any('{all}', function () {
-    return view('index');
-})->where(['all' => '.*']);
+//Route::any('{all}', function () {
+//    return view('index');
+//})->where(['all' => '.*']);
+
+Route::get('/', function () {
+    return view('welcome');
+//    return view('index');
+});
+
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
