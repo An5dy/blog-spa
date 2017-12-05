@@ -6,6 +6,8 @@ import JWT from './jwt'
 Vue.use(VueAxios, axios)
 // 设置接口前缀
 axios.defaults.baseURL = '/api'
+// 设置X-Requested-With
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 // 设置access
 axios.defaults.headers.Accept = 'application/json'
 // 设置token
