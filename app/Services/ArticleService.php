@@ -111,7 +111,7 @@ class ArticleService
                 if (! user('api')->can('update', $article)) {
                     return api_error_info('20000', '不能修改当前文章');
                 }
-                $article->update($this->attributes);
+                $article->update();
             }
             // 保存文章标签
             $tags = collect($request->tags)->map(function ($tag) {
@@ -223,7 +223,6 @@ class ArticleService
     {
         try {
             $article = $this->article->find($id);
-            return user('api');
             if (user('api')->can('delete', $article)) {
                 $article->delete($id);
                 return api_success_info('10000', '删除成功');
