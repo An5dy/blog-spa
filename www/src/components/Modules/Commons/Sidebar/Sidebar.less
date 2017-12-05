@@ -1,0 +1,26 @@
+.sidebar {
+  padding-left: 30px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  a {
+    display: block;
+    color: #636b6f;
+    margin-bottom: 8px;
+    font-size: 12px;
+    &:hover {
+      color: #2d8cf0;
+    }
+  }
+  .sidebar-article {
+    margin-bottom: 10px;
+  }
+}
+// 组件过渡动画
+.sidebar-slide-fade-enter-active {
+  transition: all 0.8s ease;
+}
+.sidebar-slide-fade-enter {
+  transform: translateX(100px);
+  opacity: 0;
+}

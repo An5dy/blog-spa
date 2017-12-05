@@ -1,0 +1,52 @@
+.article {
+  // 页面渲染过渡动画
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    opacity: 0
+  }
+  .article-content {
+    background-color: white;
+    margin: 0 auto;
+    width: 80%;
+    min-width: 500px;
+    padding: 10px 10px;
+    border-radius: 4px;
+    @media (max-width: 768px) {
+      min-width: 400px;
+    }
+    .article-title {
+      font-size: 20px;
+    }
+    .article-author {
+      margin-top: 15px;
+      font-size: 15px;
+    }
+    .article-menu {
+      ul {
+        height: 20px;
+        margin-bottom: 3px;
+        margin-top: 10px;
+        font-size: 10px;
+        color: #80848f;
+        li {
+          float: left;
+          margin-right: 20px;
+        }
+        .article-editor {
+          float: right;
+        }
+      }
+    }
+    .article-description {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-top: 1px solid #e9eaec;
+      border-bottom: 1px solid #e9eaec;
+    }
+    .article-tags {
+      padding-top: 5px;
+    }
+  }
+}

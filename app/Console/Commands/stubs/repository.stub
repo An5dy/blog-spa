@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Prettus\Repository\Eloquent\BaseRepository;
+
+class DummyClass extends BaseRepository
+{
+    public function model()
+    {
+        // TODO: Implement model() method.
+    }
+}

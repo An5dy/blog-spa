@@ -1,0 +1,42 @@
+.content {
+  display: flex;
+  .sidebar-right {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .article {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .article-list {
+    padding: 0px 5px;
+    .list-enter-active {
+      transition: all 1.5s;
+    }
+    .list-enter {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+.demo-spin-container {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  text-align: center
+}
+.demo-spin-icon-load {
+  animation: ani-demo-spin 1s linear infinite;
+}
+.ivu-spin-fix {
+  background: none;
+}
+list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
