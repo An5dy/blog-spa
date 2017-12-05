@@ -29,6 +29,7 @@ class VerificationController extends Controller
      */
     public function send(VerificationRequest $request)
     {
+        dd(2);
         $this->mailService->send($request);
 
         return api_success_info('10000', '邮件发送成功');
