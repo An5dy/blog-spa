@@ -13,12 +13,3 @@
 Route::any('{all}', function () {
     return view('index');
 })->where(['all' => '.*']);
-
-//Route::get('/', function () {
-////    return view('index');
-//    return view('index');
-//});
-
-//Auth::routes();
-//
-//Route::get('/home', 'HomeController@index')->name('home');
