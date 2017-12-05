@@ -66,4 +66,13 @@ return [
         'grant_client_id' => env('PASSPORT_PASSWORD_GRANT_CLIENT_ID'),
         'grant_client_secret' => env('PASSPORT_PASSWORD_GRANT_CLIENT_SECRET'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | github配置文件设置
+    |--------------------------------------------------------------------------
+    */
+    'webHook' => [
+        'token' => env('GITHUB_DEPLOY_TOKEN'),
+    ],
 ];
