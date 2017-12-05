@@ -111,7 +111,7 @@ class ArticleService
                 if (! user('api')->can('update', $article)) {
                     return api_error_info('20000', '不能修改当前文章');
                 }
-                $article->update();
+                $article->update($this->attributes);
             }
             // 保存文章标签
             $tags = collect($request->tags)->map(function ($tag) {
