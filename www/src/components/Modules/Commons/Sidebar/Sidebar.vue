@@ -33,7 +33,7 @@
                         友情链接
                         <p slot="content">
                             <a href="https://junhao.pro" target="_blank">
-                                Jimmy's博客
+                                Jeremy'博客
                             </a>
                             <a href="https://fmaple.com" target="_blank">
                                 随枫--博客
