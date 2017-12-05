@@ -57,28 +57,18 @@ module.exports = {
   },
 
   build: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../../resources/views/index.blade.php'),
-
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../../public'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
-    /**
-     * Source Maps
-     */
-
-    productionSourceMap: true,
-    // https://webpack.js.org/configuration/devtool/#production
-    devtool: '#source-map',
-
+    env: require('./prod.env'),// 使用 config/prod.env.js 中定义的编译环境
+    index: path.resolve(__dirname, '../../resources/views/index.blade.php'),// 编译输入的 index.blade.php 文件
+    assetsRoot: path.resolve(__dirname, '../../public'),// 编译输出的静态资源路径
+    assetsSubDirectory: 'static',// 编译输出的二级目录
+    assetsPublicPath: '/',// 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
+    productionSourceMap: true,// 是否开启 cssSourceMap
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
-    productionGzipExtensions: ['js', 'css'],
+    productionGzip: false,// 是否开启 gzip
+    productionGzipExtensions: ['js', 'css'],// 需要使用 gzip 压缩的文件扩展名
 
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
