@@ -10,6 +10,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+dd(1);
 Route::post('/deploy', 'WebHook\DeploymentController@deploy');// webhook
 
 Route::group(['prefix' => '/', 'namespace' => 'Api', 'middleware' => ['api']], function () {
