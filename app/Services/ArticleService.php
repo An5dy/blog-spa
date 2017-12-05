@@ -223,7 +223,7 @@ class ArticleService
     {
         try {
             $article = $this->article->find($id);
-            return $article;
+            return user('api');
             if (user('api')->can('delete', $article)) {
                 $article->delete($id);
                 return api_success_info('10000', '删除成功');
