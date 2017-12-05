@@ -37,7 +37,7 @@ class MailService
     public function send(Request $request)
     {
         DB::beginTransaction();
-        try {
+//        try {
             $data = [
                 'email' => $request->email,
                 'code' => random_int(1000, 9999),
@@ -47,11 +47,11 @@ class MailService
             // 发送邮件
             Mail::to($verificationCode->email)
                 ->send(new UserVerificationEmail($verificationCode));
-            DB::commit();
-        } catch (\Exception $exception) {
-            DB::rollback();
-            throw new ApiErrorException('邮件发送失败', '30000');
-        }
+//            DB::commit();
+//        } catch (\Exception $exception) {
+//            DB::rollback();
+//            throw new ApiErrorException('邮件发送失败', '30000');
+//        }
     }
 
     /**
