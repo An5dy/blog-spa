@@ -39,6 +39,7 @@
 
 <script>
     import WangEditor from 'wangeditor/release/wangEditor'
+    import JWT from '../../../../../util/jwt'
     export default {
         name: 'Add',
         data() {
@@ -91,14 +92,14 @@
                 this.editor.customConfig.uploadImgMaxLength = 1;
                 this.editor.customConfig.uploadImgHeaders = {
                     'Accept': 'application/json',
-                    'Authorization': 'Bearer ' + this.$store.state.userInfo.userInfo.access_token,
+                    'Authorization': 'Bearer ' + JWT.get(),
                 };
                 this.editor.customConfig.uploadImgHooks = {
                     error: function (xhr, editor) {
                         if (xhr.status == 401) {
                             editor.Message.warning('登录超时');
                             editor.store.dispatch('deleteUserInfo');
-                            editor.router.push({'name': 'sign'});
+                            editor.router.push('/sign');
                         }
                     }
                 }
