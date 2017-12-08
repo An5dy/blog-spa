@@ -27,7 +27,7 @@
                 <Select v-model="formData.category" style="width: 150px">
                     <Option v-for="(cate, index) in categories"
                             :key="cate.id"
-                            :value="cate.id">{{ cate.id == formData.category }}</Option>
+                            :value="cate.id">{{ cate.title }}</Option>
                 </Select>
             </FormItem>
             <FormItem>
@@ -179,7 +179,7 @@
                                 this.formData.tags.push(res.data.data.tags[key].title)
                             }
                             console.log(res.data.data.category_id, this.categories)
-//                            this.formData.category = res.data.data.category_id
+                            this.formData.category = res.data.data.category_id
                         } else {
                         this.$Message.error(res.data.message)
                         }
@@ -190,8 +190,8 @@
         mounted() {
             this.editor = null
             this.initEditor()
-            this.getCategories()
             this.getArticle()
+            this.getCategories()
         }
     }
 </script>
