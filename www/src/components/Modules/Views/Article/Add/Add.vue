@@ -27,7 +27,7 @@
                 <Select v-model="formData.category" style="width: 150px">
                     <Option v-for="(cate, index) in categories"
                             :key="cate.id"
-                            :value="cate.id">{{ cate.title }}</Option>
+                            :value="cate.id">{{ cate.id == formData.category }}</Option>
                 </Select>
             </FormItem>
             <FormItem>
@@ -61,7 +61,7 @@
                 editor: {},
                 formData: {
                     title: '',
-                    category: 1,
+                    category: 0,
                     description: '',
                     tags: []
                 },
@@ -178,6 +178,7 @@
                             for (let key in res.data.data.tags) {
                                 this.formData.tags.push(res.data.data.tags[key].title)
                             }
+                            console.log(res.data.data.category_id, this.categories)
 //                            this.formData.category = res.data.data.category_id
                         } else {
                         this.$Message.error(res.data.message)
