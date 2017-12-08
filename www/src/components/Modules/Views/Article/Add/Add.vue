@@ -62,7 +62,7 @@
                 formData: {
                     title: '',
                     category: 1,
-                    category_id: 1,
+                    category_id: '',
                     description: '',
                     tags: []
                 },
@@ -75,12 +75,7 @@
                     ]
                 },
                 tagName: '',
-//                categories: [],
-//                categories: ['{id: 1, title: "PHP"}', '{id: 2, title: "JavaScript"}'],
-                categories: [
-                    {id: 1, title: 'php'},
-                    {id: 2, title: 'Javascript'}
-                ],
+                categories: [],
                 tags: []
             }
         },
@@ -184,7 +179,7 @@
                             for (let key in res.data.data.tags) {
                                 this.formData.tags.push(res.data.data.tags[key].title)
                             }
-                            this.formData.category = res.data.data.category_id
+                            this.formData.category_id = res.data.data.category_id
                         } else {
                         this.$Message.error(res.data.message)
                         }
@@ -195,7 +190,7 @@
         mounted() {
             this.editor = null
             this.initEditor()
-//            this.getCategories()
+            this.getCategories()
             this.getArticle()
         }
     }
