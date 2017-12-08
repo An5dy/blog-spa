@@ -71,7 +71,7 @@
                 editor: {},
                 formData: {
                     title: '',
-                    category_id: '',
+                    category_id: 0,
                     description: '',
                     tags: []
                 },
