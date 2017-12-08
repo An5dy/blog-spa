@@ -24,7 +24,7 @@
                 </i-col>
             </FormItem>
             <FormItem prop="category" label="选择分类:">
-                <Select v-model="formData.category" style="width: 150px">
+                <Select v-model="formData.category_id" style="width: 150px">
                     <Option v-for="(cate, index) in categories"
                             :key="cate.id"
                             :value="cate.id">{{ cate.title }}</Option>
@@ -61,7 +61,8 @@
                 editor: {},
                 formData: {
                     title: '',
-                    category: '',
+                    category: 1,
+                    category_id: 1,
                     description: '',
                     tags: []
                 },
@@ -74,7 +75,12 @@
                     ]
                 },
                 tagName: '',
-                categories: [],
+//                categories: [],
+//                categories: ['{id: 1, title: "PHP"}', '{id: 2, title: "JavaScript"}'],
+                categories: [
+                    {id: 1, title: 'php'},
+                    {id: 2, title: 'Javascript'}
+                ],
                 tags: []
             }
         },
@@ -189,7 +195,7 @@
         mounted() {
             this.editor = null
             this.initEditor()
-            this.getCategories()
+//            this.getCategories()
             this.getArticle()
         }
     }
