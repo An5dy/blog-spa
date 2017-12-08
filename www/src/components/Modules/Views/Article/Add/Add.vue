@@ -24,10 +24,10 @@
                 </i-col>
             </FormItem>
             <FormItem label="选择分类:">
-                <Select v-model="formData.category" style="width: 150px">
+                <Select v-model="formData.category_id" style="width: 150px">
                     <Option v-for="(cate, index) in categories"
                             :key="cate.id"
-                            :value="cate.id">{{ cate.title }} {{ cate.id }} {{ formData.category }}</Option>
+                            :value="cate.id">{{ cate.title }} {{ cate.id }} {{ formData.category_id }}</Option>
                 </Select>
             </FormItem>
             <FormItem>
@@ -61,7 +61,7 @@
                 editor: {},
                 formData: {
                     title: '',
-                    category: 0,
+                    category_id: '',
                     description: '',
                     tags: []
                 },
@@ -178,8 +178,7 @@
                             for (let key in res.data.data.tags) {
                                 this.formData.tags.push(res.data.data.tags[key].title)
                             }
-                            console.log(res.data.data.category_id, this.categories)
-                            this.formData.category = res.data.data.category_id
+                            this.formData.category_id = res.data.data.category_id
                         } else {
                         this.$Message.error(res.data.message)
                         }
