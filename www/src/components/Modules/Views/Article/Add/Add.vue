@@ -188,7 +188,7 @@
                             for (let key in res.data.data.tags) {
                                 this.formData.tags.push(res.data.data.tags[key].title)
                             }
-                            this.formData.category_id = res.data.data.category_id
+                            this.formData.category_id = parseInt(res.data.data.category_id)
                         } else {
                         this.$Message.error(res.data.message)
                         }
