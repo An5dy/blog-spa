@@ -23,11 +23,21 @@
                 </Tag>
                 </i-col>
             </FormItem>
-            <FormItem label="选择分类:">
-                <Select v-model="formData.category_id" style="width: 150px">
-                    <Option v-for="category in categories"
-                            :key="category.id"
-                            :value="category.id">{{ category.title }}</Option>
+            <!--<FormItem label="选择分类:">-->
+                <!--<Select v-model="formData.category_id" style="width: 150px">-->
+                    <!--<Option v-for="category in categories"-->
+                            <!--:key="category.id"-->
+                            <!--:value="category.id">{{ category.title }}</Option>-->
+                <!--</Select>-->
+            <!--</FormItem>-->
+            <FormItem label="选择文章分类:">
+                <Select style="width: 200px;" v-model="formData.category_id">
+                    <Option
+                            v-for="category in categories"
+                            :value="category.id"
+                            :key="category.id">
+                        {{category.title}}
+                    </Option>
                 </Select>
             </FormItem>
             <FormItem>
