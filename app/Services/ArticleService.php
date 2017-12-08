@@ -99,7 +99,7 @@ class ArticleService
             'title' => e($request->title),
             'description' => $request->description,
             'user_id' => user('api')->id,
-            'category_id' => $request->category_id
+            'category_id' => $request->category
         ];
         DB::beginTransaction();
         try {

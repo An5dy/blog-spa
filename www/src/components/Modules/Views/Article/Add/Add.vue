@@ -23,21 +23,11 @@
                 </Tag>
                 </i-col>
             </FormItem>
-            <!--<FormItem label="选择分类:">-->
-                <!--<Select v-model="formData.category_id" style="width: 150px">-->
-                    <!--<Option v-for="category in categories"-->
-                            <!--:key="category.id"-->
-                            <!--:value="category.id">{{ category.title }}</Option>-->
-                <!--</Select>-->
-            <!--</FormItem>-->
-            <FormItem label="选择文章分类:">
-                <Select style="width: 200px;" v-model="formData.category_id">
-                    <Option
-                            v-for="category in categories"
-                            :value="category.id"
-                            :key="category.id">
-                        {{category.title}}
-                    </Option>
+            <FormItem prop="category" label="选择分类:">
+                <Select v-model="formData.category" style="width: 150px">
+                    <Option v-for="(cate, index) in categories"
+                            :key="cate.id"
+                            :value="cate.id">{{ cate.title }}</Option>
                 </Select>
             </FormItem>
             <FormItem>
@@ -71,7 +61,7 @@
                 editor: {},
                 formData: {
                     title: '',
-                    category_id: 0,
+                    category: 2,
                     description: '',
                     tags: []
                 },
@@ -188,7 +178,7 @@
                             for (let key in res.data.data.tags) {
                                 this.formData.tags.push(res.data.data.tags[key].title)
                             }
-                            this.formData.category_id = parseInt(res.data.data.category_id)
+                            this.formData.category = parseInt(res.data.data.category_id)
                         } else {
                         this.$Message.error(res.data.message)
                         }
@@ -199,8 +189,8 @@
         mounted() {
             this.editor = null
             this.initEditor()
-            this.getArticle()
             this.getCategories()
+            this.getArticle()
         }
     }
 </script>
