@@ -23,7 +23,7 @@
                 </Tag>
                 </i-col>
             </FormItem>
-            <FormItem prop="category" label="选择分类:">
+            <FormItem label="选择分类:">
                 <Select v-model="formData.category" style="width: 150px">
                     <Option v-for="(cate, index) in categories"
                             :key="cate.id"
