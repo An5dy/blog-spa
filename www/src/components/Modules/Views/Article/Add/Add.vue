@@ -25,9 +25,9 @@
             </FormItem>
             <FormItem label="选择分类:">
                 <Select v-model="formData.category_id" style="width: 150px">
-                    <Option v-for="(cate, index) in categories"
-                            :key="cate.id"
-                            :value="cate.id">{{ cate.title }} {{ cate.id }} {{ formData.category_id }}</Option>
+                    <Option v-for="category in categories"
+                            :key="category.id"
+                            :value="category.id">{{ category.title }}</Option>
                 </Select>
             </FormItem>
             <FormItem>
