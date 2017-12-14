@@ -12,4 +12,4 @@
 */
 Route::any('{all}', function () {
     return view('index');
-})->where(['all' => '.*']);
+})->where(['all' => '^(?!admin).*$']);

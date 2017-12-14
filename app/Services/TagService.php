@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\ApiErrorException;
 use App\Http\Resources\TagCollection;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
@@ -37,5 +38,23 @@ class TagService
 
 
         return new TagCollection($tags);
+    }
+
+    /**
+     * 删除标签
+     *
+     * @param $id
+     * @return array
+     * @throws ApiErrorException
+     */
+    public function destroy($id)
+    {
+        try {
+            $this->tagRepository->delete($id);
+
+            return api_success_info('10000', '删除成功');
+        } catch (\Exception $exception) {
+            throw new ApiErrorException('删除失败', '20000');
+        }
     }
 }

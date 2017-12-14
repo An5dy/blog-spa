@@ -15,6 +15,7 @@ Route::post('/deploy', 'WebHook\DeploymentController@deploy');// webhook
 Route::group(['prefix' => '/', 'namespace' => 'Api', 'middleware' => ['api']], function () {
     Route::get('/articles', 'ArticleController@index');// 文章
     Route::post('/articles/sidebar', 'ArticleController@getSidebar');// 获取文章侧边栏数据
+    Route::post('/friendly_links', 'FriendlyLinkController@index');// 友情链接列表
     Route::get('/articles/{id}', 'ArticleController@show')->where('id', '[0-9]+');// 获取文章详情
     Route::post('/register', 'RegisterController@register')->middleware('verifyEmailCode');// 注册
     Route::post('/verification_code/send', 'VerificationController@send')->middleware('checkEmail');// 邮件发送

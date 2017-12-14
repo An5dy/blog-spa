@@ -53,6 +53,35 @@ class ArticleService
     }
 
     /**
+     * 后台获取文章列表
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function list(Request $request)
+    {
+        $articles = $this->article
+            ->with([
+                'author' => function($query) {
+                    return $query->select('id', 'name');
+                },
+                'category' => function($query) {
+                    return $query->select('id', 'title');
+                },
+                'tags' => function($query) {
+                    return $query->select('article_id', 'title');
+                }
+            ])
+            ->scopeQuery(function ($query) use ($request) {
+                return $query->title($request->title);
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(null, ['id', 'user_id', 'category_id', 'title', 'checked_num', 'created_at']);
+
+        return $articles;
+    }
+
+    /**
      * 获取文章列表
      *
      * @param Request $request
@@ -230,6 +259,25 @@ class ArticleService
                 return api_error_info('20000', '不能删除当前文章');
             }
         }catch (\Exception $exception) {
+            throw new ApiErrorException('删除失败', '20000');
+        }
+    }
+
+    /**
+     * 后台删除文章
+     *
+     * @param $id
+     * @return array
+     * @throws ApiErrorException
+     */
+    public function destroy($id)
+    {
+        try {
+            $article = $this->article->find($id);
+            $article->delete($id);
+
+            return api_success_info('10000', '删除成功');
+        } catch (\Exception $exception) {
             throw new ApiErrorException('删除失败', '20000');
         }
     }

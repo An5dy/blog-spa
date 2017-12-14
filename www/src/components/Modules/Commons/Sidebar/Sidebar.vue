@@ -32,12 +32,13 @@
                     <Panel name="1">
                         友情链接
                         <p slot="content">
-                            <a href="https://junhao.pro" target="_blank">
-                                Jeremy'博客
-                            </a>
-                            <a href="https://fmaple.com" target="_blank">
-                                随枫--博客
-                            </a>
+                            <a  v-for="friendlyLink in friendlyLinks" href="friendlyLink.path">{{ friendlyLink.description }}</a>
+                            <!--<a href="https://junhao.pro" target="_blank">-->
+                                <!--Jeremy'博客-->
+                            <!--</a>-->
+                            <!--<a href="https://fmaple.com" target="_blank">-->
+                                <!--随枫&#45;&#45;博客-->
+                            <!--</a>-->
                         </p>
                     </Panel>
                 </Collapse>
@@ -53,6 +54,7 @@
             return {
                 hotLists: [],
                 newLists: [],
+                friendlyLinks: [],
                 choose: ''
             }
         },
@@ -60,16 +62,26 @@
             getData() {
                 this.axios.post('/articles/sidebar').then(res => {
                     if (res.data.code === '10000') {
-                        this.hotLists = res.data.data.hot;
-                        this.newLists = res.data.data.new;
+                        this.hotLists = res.data.data.hot
+                        this.newLists = res.data.data.new
                     }
                 }).catch(error => {
-                    this.$Message.error('侧边栏数据获取失败');
+                    this.$Message.error('文章数据获取失败');
+                })
+            },
+            getFriendlyLink() {
+                this.axios.post('/friendly_links').then(res => {
+                    if (res.data.code === '10000') {
+                        this.friendlyLinks = res.data.data
+                    }
+                }).catch(error => {
+                    this.$Message.error('友情链接获取失败')
                 })
             }
         },
         mounted() {
-            this.getData();
+            this.getData()
+            this.getFriendlyLink()
         },
     }
 </script>

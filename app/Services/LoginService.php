@@ -36,6 +36,9 @@ class LoginService
     public function login(Request $request)
     {
         if (auth()->once($this->credentials($request))) {
+            if (auth()->user()->status == 1) {
+                return api_error_info('20000', '用户禁止登录');
+            }
             // 获取token值
             $token = $this->tokenProxy->getToken($this->grandType, [
                 'username' => $request->email,
