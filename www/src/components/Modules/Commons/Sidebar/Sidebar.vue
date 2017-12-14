@@ -32,13 +32,7 @@
                     <Panel name="1">
                         友情链接
                         <p slot="content">
-                            <a  v-for="friendlyLink in friendlyLinks" href="friendlyLink.path">{{ friendlyLink.description }}</a>
-                            <!--<a href="https://junhao.pro" target="_blank">-->
-                                <!--Jeremy'博客-->
-                            <!--</a>-->
-                            <!--<a href="https://fmaple.com" target="_blank">-->
-                                <!--随枫&#45;&#45;博客-->
-                            <!--</a>-->
+                            <a v-for="friendlyLink in friendlyLinks" :href="friendlyLink.path">{{ friendlyLink.description }}</a>
                         </p>
                     </Panel>
                 </Collapse>
