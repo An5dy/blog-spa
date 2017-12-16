@@ -31,7 +31,7 @@ return [
         ],
         'article_add' => [
             'HTML.Doctype'             => 'XHTML 1.0 Transitional',
-            'HTML.Allowed'             => 'div[style],b,strong,i,em,u,a[href|title|target],ul,ol,li,p[style],br,span[style],img[width|height|alt|src|style],code,pre,strike,font[color]',
+            'HTML.Allowed'             => 'div[style],b,strong,i,em,u,a[href|title|target],ul,ol,li,p[style],br,span[style],img[width|height|alt|src|style],code,pre,strike,font[color],h1,h2,h3,h4,h5',
             'CSS.AllowedProperties'    => 'font,font-size,font-weight,font-style,font-family,text-decoration,padding-left,color,background-color,text-align,max-width',
             'AutoFormat.AutoParagraph' => true,
             'AutoFormat.RemoveEmpty'   => true,
