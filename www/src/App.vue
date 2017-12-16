@@ -29,4 +29,7 @@ export default {
     border-radius: 3px;
     padding: 3px 5px;
   }
+  img {
+    max-width:100%;
+  }
 </style>

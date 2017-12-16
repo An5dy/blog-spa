@@ -136,6 +136,9 @@
                     this.$Message.error('文章内容不能为空');
                     return;
                 }
+                if (this.formData.tags.length == 0) {
+                    delete this.formData.tags;
+                }
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.$Loading.start();

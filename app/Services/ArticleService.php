@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Criteria\LimitCriteria;
 use DB;
 use Illuminate\Http\Request;
 use App\Events\UpdateArticle;
+use App\Criteria\LimitCriteria;
 use App\Repositories\TagRepository;
 use App\Exceptions\ApiErrorException;
 use App\Repositories\ArticleRepository;
@@ -125,8 +125,8 @@ class ArticleService
     public function store(Request $request, $id = 0)
     {
         $this->attributes = [
-            'title' => e($request->title),
-            'description' => $request->description,
+            'title' => e(clean($request->title, 'clean_all')),
+            'description' => clean($request->description, 'article_add'),
             'user_id' => user('api')->id,
             'category_id' => $request->category
         ];
@@ -318,6 +318,8 @@ class ArticleService
         }
         $title = request()->title;
         $articles->each(function ($article) use ($title){
+            // 标签过滤
+            $article->description = clean($article->description, 'clean_all');
             // 列表展示字数
             $article->description = str_limit($article->description, config('global.article.limit'));
             // 标记搜索内容
