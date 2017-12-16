@@ -318,8 +318,8 @@ class ArticleService
         }
         $title = request()->title;
         $articles->each(function ($article) use ($title){
-//            // 标签过滤
-//            $article->description = clean($article->description, 'clean_all');
+            // 标签过滤
+            $article->description = clean($article->description, 'clean_all');
             // 列表展示字数
             $article->description = str_limit($article->description, config('global.article.limit'));
             // 标记搜索内容
