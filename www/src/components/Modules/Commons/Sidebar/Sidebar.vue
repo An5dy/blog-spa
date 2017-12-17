@@ -32,7 +32,7 @@
                     <Panel name="1">
                         友情链接
                         <p slot="content">
-                            <a v-for="friendlyLink in friendlyLinks" :href="friendlyLink.path">{{ friendlyLink.description }}</a>
+                            <a v-for="friendlyLink in friendlyLinks" :href="friendlyLink.path" target="_blank">{{ friendlyLink.description }}</a>
                         </p>
                     </Panel>
                 </Collapse>
