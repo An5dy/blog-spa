@@ -144,7 +144,7 @@ class ArticleService
             }
             // 保存文章标签
             $tags = collect($request->tags)->map(function ($tag) {
-                $tagObj = $this->tagRepository->firstOrCreate(['title' => $tag]);
+                $tagObj = $this->tagRepository->firstOrCreate(['title' => clean($tag, 'clean_all')]);
                 return $tagObj->id;
             })->toArray();
             $article->tags()->sync($tags);
